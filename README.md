@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
 
+Estimated Efforts to complete this project is 20-25 hours
+
+The below are mandatory
+
+1. Angular as front end
+2. Spring boot as backend
+3. CI/CD has to be implmented
+4. Authentication to be done by JWT
+5. End to end test cases [e2e] are compulsory
+6. Unit testing for back end is compulsory
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
