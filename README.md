@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
 
-Estimated Efforts to complete this project is 20-25 hours
+##Estimated Efforts to complete this project is 20-25 hours
 
 The below are mandatory
 
