@@ -1,0 +1,41 @@
+<h4 mat-dialog-title>{{news.title}}</h4>
+<div mat-dialog-content>
+
+  <p><img class="movie-image" mat-card-image [src]="news?.urlToImage" [alt]="news?.title"></p>
+  <span *ngIf="authService.isAdmin(); else elsepart;">
+    <mat-form-field class="mat-form-field-infix">
+      <textarea id ="description" matInput [(ngModel)]="description">{{news?.description}}</textarea>
+  </mat-form-field>
+  </span>
+  <ng-template #elsepart>
+  <span> <p> {{news?.description}}</p> </span>
+  </ng-template>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true" color= "warn" class="close">Close</button>
+  <div *ngIf="authService.isAdmin()">
+    <button mat-button id="updateDescription" color= warn (click)="updateComments()">Update</button>
+  </div>
+</div>
+
+
+
+<!-- <h4 mat-dialog-title>{{news.title}}</h4>
+<div mat-dialog-content>
+  <p><img class="movie-image" mat-card-image [src]="news?.urlToImage" [alt]="news?.title"></p>
+  
+  <span *ngIf="authService.isAdmin(); else elsepart;">
+  <mat-form-field class="mat-form-field-infix">
+    <textarea id ="description" matInput [(ngModel)]="description">{{news?.description}}</textarea>
+</mat-form-field>
+</span>
+<ng-template #elsepart>
+<span> <p> {{news?.description}}</p> </span>
+</ng-template>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true" class="close">Close</button>
+  <span *ngIf="authService.isAdmin()">
+  <button mat-button id="updateComment" color= warn (click)="updateComments()">Update</button>
+</span>
+</div> -->
