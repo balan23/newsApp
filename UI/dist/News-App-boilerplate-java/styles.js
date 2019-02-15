@@ -48,7 +48,7 @@ module.exports = ".mat-badge-content{font-weight:600;font-size:12px;font-family:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\r\n\r\nhtml, body { height: 100%; }\r\n\r\nbody { margin: 0; font-family: Roboto, \"Helvetica Neue\", sans-serif; }\r\n\r\n/* \r\nbody{\r\n    margin: 0;\r\n    height: 100vh;\r\n    width: 100vw;\r\n    overflow: hidden;\r\n} */\r\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\r\n\r\nhtml, body { height: 100%; }\r\n\r\nbody { margin: 0; font-family: Roboto, \"Helvetica Neue\", sans-serif; }\r\n\r\n/* \r\nbody{\r\n    margin: 0;\r\n    height: 100vh;\r\n    width: 100vw;\r\n    overflow: hidden;\r\n} */\r\n\r\n.mat-form-field-infix {\r\n    display: block;\r\n    position: relative;\r\n    flex: auto;\r\n    min-width: 0;\r\n    width: 733px;\r\n}"
 
 /***/ }),
 

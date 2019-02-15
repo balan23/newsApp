@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\r\n  <span>News Application</span>\r\n  <!-- admin menu starts here -->\r\n  <span *ngIf=\"authService.isLoggedIn()\">\r\n    <span *ngIf=\"authService.isAdmin()\">\r\n  <button mat-button [routerLink]=\"['./news/allnews']\" >All news</button>\r\n  <button mat-button [routerLink]=\"['./news/appnews']\" class=\"appnews\">App news</button>\r\n</span>\r\n<span *ngIf=\"!authService.isAdmin()\">\r\n<button mat-button [routerLink]=\"['./news/appnews']\" class=\"appnews\">App news</button>\r\n<button mat-button [routerLink]=\"['./news/watchlist']\" class=\"watchlist\">WatchList</button>\r\n<button  mat-button [routerLink]=\"['./news/search']\" class=\"search-button\">Search</button>\r\n</span>\r\n<button mat-buton (click)=\"Logout()\" class=\"logout\">Logout</button>\r\n</span>\r\n<!-- {{authService.isAdmin()}} -->\r\n<!-- admin menu ends here -->\r\n  </mat-toolbar>\r\n  <router-outlet></router-outlet>\r\n"
+module.exports = "<mat-toolbar color=\"primary\">\r\n  <span>News App FSE</span>\r\n  <!-- admin menu starts here -->\r\n  <span *ngIf=\"authService.isLoggedIn()\">\r\n    <span *ngIf=\"authService.isAdmin()\">\r\n  <button mat-button [routerLink]=\"['./news/allnews']\" >All news</button>\r\n  <button mat-button [routerLink]=\"['./news/appnews']\" class=\"appnews\">App news</button>\r\n</span>\r\n<span *ngIf=\"!authService.isAdmin()\">\r\n<button mat-button [routerLink]=\"['./news/appnews']\" class=\"appnews\">App news</button>\r\n<button mat-button [routerLink]=\"['./news/watchlist']\" class=\"watchlist\">WatchList</button>\r\n<button  mat-button [routerLink]=\"['./news/search']\" class=\"search-button\">Search</button>\r\n</span>\r\n<button mat-buton (click)=\"Logout()\" class=\"logout\">Logout</button>\r\n</span>\r\n<!-- {{authService.isAdmin()}} -->\r\n<!-- admin menu ends here -->\r\n  </mat-toolbar>\r\n  <router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -427,7 +427,7 @@ var TOKEN_NAME = 'jwt_token';
 var AuthenticationService = /** @class */ (function () {
     function AuthenticationService(httpClient) {
         this.httpClient = httpClient;
-        this.springEndpoint = 'http://localhost:7089/api/userservice';
+        this.springEndpoint = 'http://localhost:8089/api/userservice';
     }
     AuthenticationService.prototype.registerUser = function (newUser) {
         debugger;
@@ -517,7 +517,7 @@ module.exports = ".login-block{\r\n    margin: auto;\r\n    width: 50%;\r\n    p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"login-form\" #loginForm=\"ngForm\" (ngSubmit)=\"loginUser()\" [style.fontsize.px]=\"20\">\r\n    <div class=\"login-block\">\r\n      <div class=\"row\">\r\n        <h3>Login User</h3>\r\n      </div>\r\n      <div class=\"row\">\r\n         <mat-form-field class=\"full-width\">\r\n          <mat-label>userid</mat-label>\r\n          <input id=\"userid\" matInput class=\"inputID\" placeholder=\"userid\" [(ngModel)]=\"newUser.userId\" name=\"userid\" required minlength=\"5\" maxlength=\"10\">\r\n        </mat-form-field>\r\n        <mat-form-field class=\"full-width\">\r\n          <mat-label>Password</mat-label>\r\n          <input id=\"password\" class=\"inputPass\" matInput placeholder=\"Password\" [(ngModel)]=\"newUser.password\" name=\"password\" type=\"password\">\r\n        </mat-form-field>\r\n      </div>\r\n      <div class=\"row\">\r\n          <button class=\"login-user\" mat-raised-button  type=\"submit\" color=\"primary\">Login</button>\r\n          <button class=\"register-button\" mat-raised-button  [routerLink]=\"['/register']\" color=\"primary\">Register</button>\r\n      </div>\r\n    </div>\r\n  </form>"
+module.exports = "<form class=\"login-form\" #loginForm=\"ngForm\" (ngSubmit)=\"loginUser()\" [style.fontsize.px]=\"20\">\r\n    <div class=\"login-block\">\r\n      <div class=\"row\">\r\n        <h3>Sign in to News App</h3>\r\n      </div>\r\n      <div class=\"row\">\r\n         <mat-form-field class=\"full-width\">\r\n          <mat-label>Login Id</mat-label>\r\n          <input id=\"userid\" matInput class=\"inputID\" placeholder=\"Login Id\" [(ngModel)]=\"newUser.userId\" name=\"userid\" required minlength=\"5\" maxlength=\"10\">\r\n        </mat-form-field>\r\n        <mat-form-field class=\"full-width\">\r\n          <mat-label>Password</mat-label>\r\n          <input id=\"password\" class=\"inputPass\" matInput placeholder=\"Password\" [(ngModel)]=\"newUser.password\" name=\"password\" type=\"password\">\r\n        </mat-form-field>\r\n      </div>\r\n      <div class=\"row\">\r\n          <button class=\"login-user\" mat-raised-button  type=\"submit\" color=\"primary\">Login</button> &nbsp;\r\n          <button class=\"register-button\" mat-raised-button  [routerLink]=\"['/register']\" color=\"primary\">Register</button>\r\n      </div>\r\n    </div>\r\n  </form>"
 
 /***/ }),
 
@@ -607,7 +607,7 @@ module.exports = ".register-block{\r\n    margin: auto;\r\n    width: 50%;\r\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"register-form\" #registerForm=\"ngForm\" [style.fontsize.px]=\"20\">\r\n    <div class=\"register-block\">\r\n      <div class=\"row\">\r\n        <h3>Register User</h3>\r\n      </div>\r\n      <div class=\"row\">\r\n        <mat-form-field class=\"full-width\">\r\n          <mat-label>First Name</mat-label>\r\n          <input id=\"firstName\" matInput placeholder=\"First name\" [(ngModel)]=\"newUser.firstName\"name=\"firstName\" required>\r\n        </mat-form-field>\r\n        <mat-form-field class=\"full-width\">\r\n          <mat-label>Last Name</mat-label>\r\n          <input id=\"lastName\" matInput placeholder=\"Last Name\" [(ngModel)]=\"newUser.lastName\" name=\"firstName\" required>\r\n        </mat-form-field>\r\n       \r\n        <mat-form-field class=\"full-width\">\r\n          <mat-label>userid</mat-label>\r\n          <input id=\"userid\" matInput placeholder=\"Email\" [(ngModel)]=\"newUser.userId\" name=\"userid\" required minlength=\"5\" maxlength=\"10\">\r\n        </mat-form-field>\r\n        <mat-form-field class=\"full-width\">\r\n          <mat-label>Password</mat-label>\r\n          <input id=\"password\" matInput placeholder=\"Password\" [(ngModel)]=\"newUser.password\" name=\"password\" type=\"password\">\r\n        </mat-form-field>\r\n      </div>\r\n      <div class=\"row\">\r\n          <button class=\"register-user\" mat-raised-button   (click)=\"registerUser()\" color=\"primary\">Register</button>\r\n          <button mat-raised-button  type=\"reset\" (click)=\"resetInput()\" color=\"primary\">clear</button>\r\n      </div>\r\n    </div>\r\n  </form>"
+module.exports = "<form class=\"register-form\" #registerForm=\"ngForm\" [style.fontsize.px]=\"20\">\r\n    <div class=\"register-block\">\r\n      <div class=\"row\">\r\n        <h3>Register for News App</h3>\r\n      </div>\r\n      <div class=\"row\">\r\n        <mat-form-field class=\"full-width\">\r\n          <mat-label>First Name</mat-label>\r\n          <input id=\"firstName\" matInput placeholder=\"First name\" [(ngModel)]=\"newUser.firstName\"name=\"firstName\" required>\r\n        </mat-form-field>\r\n        <mat-form-field class=\"full-width\">\r\n          <mat-label>Last Name</mat-label>\r\n          <input id=\"lastName\" matInput placeholder=\"Last Name\" [(ngModel)]=\"newUser.lastName\" name=\"firstName\" required>\r\n        </mat-form-field>\r\n       \r\n        <mat-form-field class=\"full-width\">\r\n          <mat-label>Login Id</mat-label>\r\n          <input id=\"userid\" matInput placeholder=\"Login Id\" [(ngModel)]=\"newUser.userId\" name=\"userid\" required minlength=\"5\" maxlength=\"10\">\r\n        </mat-form-field>\r\n        <mat-form-field class=\"full-width\">\r\n          <mat-label>Password</mat-label>\r\n          <input id=\"password\" matInput placeholder=\"Password\" [(ngModel)]=\"newUser.password\" name=\"password\" type=\"password\">\r\n        </mat-form-field>\r\n      </div>\r\n      <div class=\"row\">\r\n          <button class=\"register-user\" mat-raised-button   (click)=\"registerUser()\" color=\"primary\">Register</button>\r\n          <button mat-raised-button  type=\"reset\" (click)=\"resetInput()\" color=\"primary\">clear</button>\r\n      </div>\r\n    </div>\r\n  </form>"
 
 /***/ }),
 
@@ -754,7 +754,7 @@ var ContainerComponent = /** @class */ (function () {
         var isAdmin = this.authSer.isAdmin();
         if (isAdmin) {
             this.newsService.deleteFromLocalRepo(news).subscribe(function (news) {
-                _this.matSnackBar.open('News deleted from application!', '', { duration: 2000 });
+                _this.matSnackBar.open('News deleted from app news', '', { duration: 2000 });
             }, function (err) {
                 console.log("error message", err.error);
                 _this.matSnackBar.open(err.error, '', { duration: 1000 });
@@ -762,7 +762,7 @@ var ContainerComponent = /** @class */ (function () {
         }
         else {
             this.newsService.deleteFromWatchList(news).subscribe(function (news) {
-                _this.matSnackBar.open('News deleted from watchlist!', '', { duration: 1000 });
+                _this.matSnackBar.open('News deleted from your watchlist', '', { duration: 1000 });
             });
         }
         for (var i = 0; i < this.newslist.length; i++) {
@@ -799,7 +799,7 @@ var ContainerComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".mat-form-field-infix {\r\n    display: block;\r\n    position: relative;\r\n    flex: auto;\r\n    min-width: 0;\r\n    width: 733px;\r\n}"
+module.exports = ".mat-form-field-infix {\r\n    display: block;\r\n    position: relative;\r\n    flex: auto;\r\n    min-width: 0;\r\n    width: 733px;\r\n}\r\n\r\n.mat-card-image{\r\n    width: calc(60% + 32px);\r\n    margin: 0 -16px 16px -16px;\r\n}"
 
 /***/ }),
 
@@ -810,7 +810,7 @@ module.exports = ".mat-form-field-infix {\r\n    display: block;\r\n    position
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<span> {{news.title}}</span>\r\n<h4 mat-dialog-title>{{news.title}}</h4>\r\n<div mat-dialog-content>\r\n\r\n  <p><img class=\"movie-image\" mat-card-image [src]=\"news?.urlToImage\" [alt]=\"news?.title\"></p>\r\n  <p> {{news?.description}}</p>\r\n  <mat-form-field>\r\n    <textarea id =\"description\" matInput [(ngModel)]=\"description\">{{news?.description}}</textarea>\r\n</mat-form-field>\r\n</div>\r\n<div mat-dialog-actions>\r\n  <button mat-button [mat-dialog-close]=\"true\" class=\"close\">Close</button>\r\n  <button mat-button id=\"updateComment\" color= warn (click)=\"updateComments()\">Update</button>\r\n</div>"
+module.exports = "<h4 mat-dialog-title>{{news.title}}</h4>\r\n<div mat-dialog-content>\r\n\r\n  <p><img class=\"movie-image\" mat-card-image [src]=\"news?.urlToImage\" [alt]=\"news?.title\"></p>\r\n  <span *ngIf=\"authService.isAdmin(); else elsepart;\">\r\n    <mat-form-field class=\"mat-form-field-infix\">\r\n      <textarea id =\"description\" matInput [(ngModel)]=\"description\">{{news?.description}}</textarea>\r\n  </mat-form-field>\r\n  </span>\r\n  <ng-template #elsepart>\r\n  <span> <p> {{news?.description}}</p> </span>\r\n  </ng-template>\r\n</div>\r\n<div mat-dialog-actions>\r\n  <button mat-button [mat-dialog-close]=\"true\" color= \"warn\" class=\"close\">Close</button>\r\n  <div *ngIf=\"authService.isAdmin()\">\r\n    <button mat-button id=\"updateDescription\" color= warn (click)=\"updateComments()\">Update</button>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n<!-- <h4 mat-dialog-title>{{news.title}}</h4>\r\n<div mat-dialog-content>\r\n  <p><img class=\"movie-image\" mat-card-image [src]=\"news?.urlToImage\" [alt]=\"news?.title\"></p>\r\n  \r\n  <span *ngIf=\"authService.isAdmin(); else elsepart;\">\r\n  <mat-form-field class=\"mat-form-field-infix\">\r\n    <textarea id =\"description\" matInput [(ngModel)]=\"description\">{{news?.description}}</textarea>\r\n</mat-form-field>\r\n</span>\r\n<ng-template #elsepart>\r\n<span> <p> {{news?.description}}</p> </span>\r\n</ng-template>\r\n</div>\r\n<div mat-dialog-actions>\r\n  <button mat-button [mat-dialog-close]=\"true\" class=\"close\">Close</button>\r\n  <span *ngIf=\"authService.isAdmin()\">\r\n  <button mat-button id=\"updateComment\" color= warn (click)=\"updateComments()\">Update</button>\r\n</span>\r\n</div> -->"
 
 /***/ }),
 
@@ -827,6 +827,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _newsapp_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../newsapp.service */ "./src/app/modules/newsapp/newsapp.service.ts");
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm5/dialog.es5.js");
+/* harmony import */ var _authentication_authentication_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../authentication/authentication.service */ "./src/app/modules/authentication/authentication.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -842,25 +844,48 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
+
+
 var DetailviewComponent = /** @class */ (function () {
-    function DetailviewComponent(dialogRef, data, newsServ, dialog) {
+    function DetailviewComponent(sbar, dialogRef, data, newsServ, authService, dialog) {
+        this.sbar = sbar;
         this.dialogRef = dialogRef;
         this.data = data;
         this.newsServ = newsServ;
+        this.authService = authService;
         this.dialog = dialog;
+        this.updatesNewsDescription = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.news = data.obj;
         this.description = data.obj.description;
     }
     DetailviewComponent.prototype.ngOnInit = function () {
     };
+    DetailviewComponent.prototype.updateNewsDescription = function () {
+        this.updatesNewsDescription.emit(this.news);
+    };
+    DetailviewComponent.prototype.updateComments = function () {
+        var _this = this;
+        console.log(this.description);
+        this.news.description = this.description;
+        this.dialogRef.close();
+        this.newsServ.updateNewsDescription(this.news).subscribe(function (news) {
+            _this.sbar.open("description updated", "", {
+                duration: 2000,
+            });
+        });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], DetailviewComponent.prototype, "updatesNewsDescription", void 0);
     DetailviewComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'newsapp-detailview',
             template: __webpack_require__(/*! ./detailview.component.html */ "./src/app/modules/newsapp/components/detailview/detailview.component.html"),
             styles: [__webpack_require__(/*! ./detailview.component.css */ "./src/app/modules/newsapp/components/detailview/detailview.component.css")]
         }),
-        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"])),
-        __metadata("design:paramtypes", [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"], Object, _newsapp_service__WEBPACK_IMPORTED_MODULE_1__["NewsappService"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MatDialog"]])
+        __param(2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"])),
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"], Object, _newsapp_service__WEBPACK_IMPORTED_MODULE_1__["NewsappService"], _authentication_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MatDialog"]])
     ], DetailviewComponent);
     return DetailviewComponent;
 }());
@@ -1105,7 +1130,7 @@ module.exports = ".movie-thumbnail{\r\n    width:320px;\r\n    margin:10px;\r\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<mat-card class=\"movie-thumbnail\">\r\n\r\n  <mat-card-header>\r\n      <mat-card-title>\r\n          {{ (news?.title.length>33)? (news?.title | slice:0:33)+'..':(news?.title) }}\r\n      </mat-card-title>\r\n      <mat-card-subtitle>{{news?.publishedAt}}</mat-card-subtitle>\r\n  </mat-card-header>\r\n  <img class=\"movie-image\" mat-card-image [src]=\"news?.urlToImage\" [alt]=\"news?.title\">\r\n \r\n  <mat-card-content class=\"movie-overview\"> \r\n      {{news?.description}}\r\n  </mat-card-content>\r\n\r\n  <mat-card-actions class=\"movie-actions\" *ngIf=\"!authService.isAdmin()\">\r\n      <button *ngIf=\"!(this.router.url == '/news/watchlist')\" mat-button color=\"primary\" (click)=\"addNews()\" class=\"addButton\">Add</button>\r\n       <button *ngIf=\"!(this.router.url == '/news/appnews' || this.router.url == '/news/search')\" mat-button class=\"deleteButton\" color=\"primary\" (click)=\"deleteNews()\">Delete</button>\r\n       <button mat-button color=\"primary\" (click)=\"viewDetails ()\">View Details</button>\r\n    </mat-card-actions>\r\n   <mat-card-actions class=\"movie-actions\" *ngIf=\"authService.isAdmin()\">\r\n      <button *ngIf=\"this.router.url == '/news/allnews'\" mat-button color=\"primary\" (click)=\"addNews()\" class=\"addButton\">Add</button>\r\n       <button *ngIf=\"this.router.url == '/news/appnews'\" mat-button color=\"primary\" (click)=\"deleteNews()\" class=\"deleteButton\">Delete</button>\r\n       <button mat-button color=\"primary\" (click)=\"viewDetails ()\" class=\"viewdetail\">View Details</button>\r\n    </mat-card-actions>\r\n</mat-card>"
+module.exports = "\r\n<mat-card class=\"movie-thumbnail\">\r\n  <mat-card-header>\r\n      <mat-card-title>\r\n          {{ (news?.title.length>33)? (news?.title | slice:0:33)+'..':(news?.title) }}\r\n      </mat-card-title>\r\n      <mat-card-subtitle>{{news?.publishedAt}}</mat-card-subtitle>\r\n  </mat-card-header>\r\n  <img class=\"movie-image\" mat-card-image [src]=\"news?.urlToImage\" [alt]=\"news?.title\">\r\n  <mat-card-content class=\"movie-overview\"> \r\n      {{news?.description}}\r\n  </mat-card-content>\r\n  <mat-card-actions class=\"movie-actions\" *ngIf=\"!authService.isAdmin()\">\r\n      <button *ngIf=\"!(this.router.url == '/news/watchlist')\" mat-button color=\"primary\" (click)=\"addNews()\" class=\"addButton\">Add to Wishlist</button>\r\n       <button *ngIf=\"!(this.router.url == '/news/appnews' || this.router.url == '/news/search')\" mat-button class=\"deleteButton\" color=\"primary\" (click)=\"deleteNews()\">Delete</button>\r\n       <button mat-button color=\"primary\" (click)=\"viewDetails ()\">View Details</button>\r\n    </mat-card-actions>\r\n   <mat-card-actions class=\"movie-actions\" *ngIf=\"authService.isAdmin()\">\r\n      <button *ngIf=\"this.router.url == '/news/allnews'\" mat-button color=\"primary\" (click)=\"addNews()\" class=\"addButton\">Add To App News</button>\r\n       <button *ngIf=\"this.router.url == '/news/appnews'\" mat-button color=\"primary\" (click)=\"deleteNews()\" class=\"deleteButton\">Delete</button>\r\n       <button *ngIf=\"!(this.router.url == '/news/allnews')\" mat-button color=\"primary\" (click)=\"viewDetails ()\" class=\"viewdetail\">View Details</button>\r\n    </mat-card-actions>\r\n</mat-card>"
 
 /***/ }),
 
@@ -1159,7 +1184,6 @@ var ThumbnailComponent = /** @class */ (function () {
         this.deleteNewsEvent.emit(this.news);
     };
     ThumbnailComponent.prototype.viewDetails = function () {
-        console.log('movie is getting updated');
         var dialogRef = this.matDlg.open(_detailview_detailview_component__WEBPACK_IMPORTED_MODULE_5__["DetailviewComponent"], {
             width: "800px",
             data: { obj: this.news }
@@ -1519,24 +1543,19 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var NewsappService = /** @class */ (function () {
-    //GET /api/v1/watchlist
     function NewsappService(http) {
         this.http = http;
-        this.apiKey = "e4b41bc6acf248d19f90e1617d411beb";
-        this.baseRepoUrl = "https://newsapi.org/v2/";
+        this.apiKey = "b23da559e02742b593c9c7591281c685";
         this.newsApiEndpoint = "https://newsapi.org/v2/top-headlines";
-        this.newsLocalRepoUrl = "http://localhost:7081/api/v1/news";
-        this.deleteFromLocalRepoUrl = "http://localhost:7081/api/v1/news/delete";
-        this.watchListUrl = "http://localhost:7081/api/v1/watchlist";
+        this.newsLocalRepoUrl = "http://localhost:8081/api/v1/news";
+        this.deleteFromLocalRepoUrl = "http://localhost:8081/api/v1/news/delete";
+        this.watchListUrl = "http://localhost:8081/api/v1/watchlist";
     }
-    //https://newsapi.org/v2/everything?q=%3C%3Csearch_text%3E%3E&apiKey=e4b41bc6acf248d19f90e1617d411beb&language=en&page=1
-    //get movies from third party
     NewsappService.prototype.getNews = function () {
-        //https://newsapi.org/v2/top-headlines?country=in&apikey=e4b41bc6acf248d19f90e1617d411beb&page=1
         var url = this.newsApiEndpoint + "?country=in&apikey=" + this.apiKey + "&page=1";
         return this.http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(this.pickMovieResults));
     };
-    //get from local
+    //get from local app news
     NewsappService.prototype.getLocalRepoNews = function () {
         return this.http.get(this.newsLocalRepoUrl);
     };
@@ -1544,7 +1563,7 @@ var NewsappService = /** @class */ (function () {
     NewsappService.prototype.getMyNews = function () {
         return this.http.get(this.watchListUrl);
     };
-    // add movies to local repo by admin
+    // add movies to local app repo by admin
     NewsappService.prototype.addNews = function (news) {
         return this.http.post(this.newsLocalRepoUrl, news);
     };
@@ -1569,6 +1588,11 @@ var NewsappService = /** @class */ (function () {
             return this.http.get(url);
         }
         return null;
+    };
+    NewsappService.prototype.updateNewsDescription = function (news) {
+        var url = this.newsLocalRepoUrl + "/update/" + news.newsId;
+        console.log(news.title, 'update to news');
+        return this.http.put(url, news);
     };
     NewsappService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
