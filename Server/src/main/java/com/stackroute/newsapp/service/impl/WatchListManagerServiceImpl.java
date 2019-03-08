@@ -60,7 +60,7 @@ public class WatchListManagerServiceImpl implements WatchListManagerService {
 
 	@Override
 	public List<NewsEntity> getAllNews(String userId) {
-		return  (List<NewsEntity>) watchListRepo.getAllWatchListNews(userId);
+		return  (List<NewsEntity>) watchListRepo.fetchAllWatchListEntity(userId);
 	}
 
 	@Override

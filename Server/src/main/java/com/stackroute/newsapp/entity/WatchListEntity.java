@@ -23,7 +23,7 @@ import javax.persistence.Table;
 @NamedQuery(name = "WatchListEntity.fetchByIdAndUserId",
 query = "SELECT w FROM WatchListEntity w WHERE w.news.newsId =:id and w.userId=:userId"
 ),
-@NamedQuery(name = "WatchListEntity.getAllWatchListNews",
+@NamedQuery(name = "WatchListEntity.fetchAllWatchListEntity",
 query = "SELECT w.news FROM WatchListEntity w WHERE w.userId=:userId"
 ),
 @NamedQuery(name = "WatchListEntity.searchNews",

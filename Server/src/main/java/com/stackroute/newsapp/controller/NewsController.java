@@ -101,9 +101,6 @@ public class NewsController {
 		} catch (NewsNotFoundException exception) {
 			responseEntity = new ResponseEntity<String>("{ message :" + exception.getMessage() + "}",
 					HttpStatus.NOT_FOUND);
-		}catch(DataIntegrityViolationException e) {
-			responseEntity = new ResponseEntity<String>("Unable to delete,news used by user",
-					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}else{
 			responseEntity = new ResponseEntity<String>("Logged in user doesnt have previlage to access",
@@ -117,7 +114,7 @@ public class NewsController {
 	 * @return responseEntity
 	 */
 	@GetMapping
-	public ResponseEntity<?> getAllNews(final ServletRequest req,final ServletResponse res, HttpServletRequest request) {
+	public ResponseEntity<?> getAllNews() {
 	
 		ResponseEntity<?> responseEntity = null;
 		
@@ -129,7 +126,7 @@ public class NewsController {
 	
 
 	@GetMapping(path="/search/{searchText}")
-	public ResponseEntity<?> searchNews(final ServletRequest req,final ServletResponse res,@PathVariable("searchText")String searchText, HttpServletRequest request) {
+	public ResponseEntity<?> searchNews(@PathVariable("searchText")String searchText) {
 		ResponseEntity<?> responseEntity = null;
 	
 		List<NewsEntity> news = newsManagerServiceImpl.searchByTitle(searchText);

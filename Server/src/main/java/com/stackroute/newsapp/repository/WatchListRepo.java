@@ -33,7 +33,7 @@ public interface WatchListRepo  extends JpaRepository<WatchListEntity, Integer>{
 	 * @param userId
 	 * @return
 	 */
-	List<NewsEntity> getAllWatchListNews (@Param("userId") String userId);
+	List<NewsEntity> fetchAllWatchListEntity (@Param("userId") String userId);
 	
 	
 	/**
