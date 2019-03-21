@@ -16,7 +16,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.stackroute.newsapp.entity.NewsEntity;
-import com.stackroute.newsapp.exception.NewsAlreadyExistsException;
 import com.stackroute.newsapp.exception.NewsNotFoundException;
 import com.stackroute.newsapp.repository.NewsRepo;
 import com.stackroute.newsapp.service.impl.NewsManagerServiceImpl;
@@ -34,7 +33,7 @@ public class NewsServiceTest {
 	transient Optional<NewsEntity> options;
 
 	@Test
-	public void saveNewsTest() throws NewsAlreadyExistsException {
+	public void saveNewsTest() {
 		NewsEntity news = new NewsEntity();
 		news.setAuthor("authorC");
 		news.setDescription("descriptionC");

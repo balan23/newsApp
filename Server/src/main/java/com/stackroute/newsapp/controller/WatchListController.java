@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.stackroute.newsapp.entity.NewsEntity;
-import com.stackroute.newsapp.exception.NewsAlreadyExistsException;
+
 import com.stackroute.newsapp.exception.NewsNotFoundException;
 import com.stackroute.newsapp.service.WatchListManagerService;
 
@@ -48,17 +48,14 @@ public class WatchListController {
 	@PostMapping
 	public ResponseEntity<?>addToWatchList(@RequestBody NewsEntity news, HttpServletRequest request) {
 		ResponseEntity<?> responseEntity = null;
-		try {
+		
 			final String authHeader = request.getHeader("authorization");
 			final String token = authHeader.substring(7);
 			String userId=Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody().getSubject();
 			news.setUserId(userId);
 			watchListManagerService.saveNews(news);
 			responseEntity = new ResponseEntity<NewsEntity>(news, HttpStatus.CREATED);
-		} catch (NewsAlreadyExistsException exception) {
-			responseEntity = new ResponseEntity<String>("{ message :" + exception.getMessage() + "}",
-					HttpStatus.CONFLICT);
-		}
+
 		return responseEntity;
 	}
 	/**

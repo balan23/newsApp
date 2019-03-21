@@ -3,7 +3,7 @@ package com.stackroute.newsapp.service;
 import java.util.List;
 
 import com.stackroute.newsapp.entity.NewsEntity;
-import com.stackroute.newsapp.exception.NewsAlreadyExistsException;
+
 import com.stackroute.newsapp.exception.NewsNotFoundException;
 
 /**
@@ -17,7 +17,7 @@ public interface NewsManagerService {
 	 * @return true for successful save , else false
 	 * @throws NewsAlreadyExistsException
 	 */
-	public boolean saveNews(NewsEntity news) throws NewsAlreadyExistsException;
+	public boolean saveNews(NewsEntity news);
 	/**
 	 * @param news
 	 * @return News for successful update, NewsNotFoundException for news doesnt exits 

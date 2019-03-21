@@ -1,14 +1,12 @@
 package com.stackroute.newsapp.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.stackroute.newsapp.entity.NewsEntity;
 import com.stackroute.newsapp.entity.WatchListEntity;
-import com.stackroute.newsapp.exception.NewsAlreadyExistsException;
 import com.stackroute.newsapp.exception.NewsNotFoundException;
 import com.stackroute.newsapp.repository.WatchListRepo;
 import com.stackroute.newsapp.service.WatchListManagerService;
@@ -24,25 +22,10 @@ public class WatchListManagerServiceImpl implements WatchListManagerService {
 	@Autowired
 	private WatchListRepo watchListRepo;
 	@Override
-	public boolean saveNews(NewsEntity news) throws NewsAlreadyExistsException {
-		System.out.println(news.getId());
-		System.out.println(news.getAuthor());
-		System.out.println(news.getDescription());
-		System.out.println(news.getPublishedAt());
-		System.out.println(news.getUrlToImage());
-		//String userId= testUserId;
-		if (news.getId() != null) {
-			final List<WatchListEntity> object = watchListRepo.fetchByIdAndUserId(Integer.parseInt(news.getId()),news.getUserId());	
-			if (object.size()>0) {
-				throw new NewsAlreadyExistsException("Could not save news, News already exists");
-			}
-		}
-		//watchListRepo.save(new WatchListItem(news,news.getUserId()));
-		System.out.println("before");
+	public boolean saveNews(NewsEntity news) {
 		WatchListEntity wlt = new WatchListEntity(news,news.getUserId());
 		watchListRepo.save(wlt);
 		watchListRepo.flush();
-		System.out.println("after");
 		return true;
 	}
 

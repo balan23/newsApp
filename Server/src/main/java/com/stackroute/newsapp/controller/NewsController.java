@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stackroute.newsapp.entity.NewsEntity;
-import com.stackroute.newsapp.exception.NewsAlreadyExistsException;
 import com.stackroute.newsapp.exception.NewsNotFoundException;
 import com.stackroute.newsapp.service.NewsManagerService;
 import com.stackroute.newsapp.util.UserUtil;
@@ -43,13 +42,10 @@ public class NewsController {
 	public ResponseEntity<?>saveNews(@RequestBody NewsEntity news, HttpServletRequest request) {
 		ResponseEntity<?> responseEntity = null;
 		if(userUtil.isAdmin(request)){
-		try {
+
 			newsManagerServiceImpl.saveNews(news);
 			responseEntity = new ResponseEntity<NewsEntity>(news, HttpStatus.CREATED);
-		} catch (NewsAlreadyExistsException exception) {
-			responseEntity = new ResponseEntity<String>("{ message :" + exception.getMessage() + "}",
-					HttpStatus.CONFLICT);
-		}
+
 		}else{
 			responseEntity = new ResponseEntity<String>("Logged in user doesnt have previlage to access",
 					HttpStatus.UNAUTHORIZED);

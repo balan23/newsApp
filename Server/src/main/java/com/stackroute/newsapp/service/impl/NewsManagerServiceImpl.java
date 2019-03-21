@@ -1,13 +1,11 @@
 package com.stackroute.newsapp.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.stackroute.newsapp.entity.NewsEntity;
-import com.stackroute.newsapp.exception.NewsAlreadyExistsException;
 import com.stackroute.newsapp.exception.NewsNotFoundException;
 import com.stackroute.newsapp.repository.NewsRepo;
 import com.stackroute.newsapp.service.NewsManagerService;
@@ -23,13 +21,7 @@ public class NewsManagerServiceImpl implements NewsManagerService {
 	private NewsRepo newsRepo;
 
 	@Override
-	public boolean saveNews(NewsEntity news) throws NewsAlreadyExistsException {
-		if (news.getId() != null) {
-			final Optional<NewsEntity> object = newsRepo.findById(news.getNewsId());
-			if (object.isPresent()) {
-				throw new NewsAlreadyExistsException("Could not save news, News already exists");
-			}
-		}
+	public boolean saveNews(NewsEntity news){
 		newsRepo.save(news);
 		return true;
 	}
