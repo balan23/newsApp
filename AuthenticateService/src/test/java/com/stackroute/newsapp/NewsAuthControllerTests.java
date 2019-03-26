@@ -54,7 +54,7 @@ public class NewsAuthControllerTests {
     @Test
     public void testRegisterUser() throws Exception {
         Mockito.when(service.saveUser(user)).thenReturn(true);
-        mvc.perform(post("/api/v1/auth/register").contentType(MediaType.APPLICATION_JSON).content(jsonToString(user)))
+        mvc.perform(post("/api/userservice/register").contentType(MediaType.APPLICATION_JSON).content(jsonToString(user)))
                 .andExpect(status().isCreated());
 
     }
@@ -65,7 +65,7 @@ public class NewsAuthControllerTests {
         String password = "password";
         Mockito.when(service.saveUser(user)).thenReturn(true);
         Mockito.when(service.findbyUserIdAndPassword(userId, password)).thenReturn(user);
-        mvc.perform(post("/api/v1/auth/login").contentType(MediaType.APPLICATION_JSON).content(jsonToString(user)))
+        mvc.perform(post("/api/userservice/login").contentType(MediaType.APPLICATION_JSON).content(jsonToString(user)))
                 .andExpect(status().isOk());
     }    
 	
