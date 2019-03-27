@@ -1,10 +1,16 @@
-package com.stackroute.newsapp;
+/**
+ * 
+ */
+package com.stackroute.newsapp.repository;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import javax.transaction.Transactional;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -28,7 +34,7 @@ import com.stackroute.newsapp.service.UserService;
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Transactional
 public class UserRepositoryTest {
-	
+
 	@MockBean
 	private transient UserService service;
 	
@@ -37,17 +43,40 @@ public class UserRepositoryTest {
 	
 	@Mock
 	private transient User user;
-	
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
 	@Before
-	public void setup() {
+	public void setUp() throws Exception {
 		user = new User();
 		user.setFirtName("Fname");
 		user.setLastName("Lname");
 		user.setPassword("password");
 		user.setUserid("Admin");
-		
 	}
-	
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+	}
+
     @Test
     public void testRegisterUser() {
     	userRepository.save(user);
@@ -62,4 +91,5 @@ public class UserRepositoryTest {
         User object = userRepository.findById(user.getUserid()).get();
         assertEquals(user.getUserid(), object.getUserid());
     }
+
 }
